@@ -3,7 +3,7 @@ import './App.css';
 import { db,auth,storage } from './config/firebase';
 import { useEffect, useState } from 'react';
 import {getDocs, collection, addDoc, deleteDoc, updateDoc, doc} from 'firebase/firestore';
-import {ref, uploadBytes} from 'firebase/storage';
+import {ref, uploadBytes,getBytes} from 'firebase/storage';
 function App() {
 
   const [movies, setMovies] = useState([]);
@@ -94,7 +94,7 @@ function App() {
       {movies.map((eachMovie,index)=>{
         return (
           <div key = {index}>
-            <h1 style = {eachMovie.isOscar?{'color':'green'}:{'color':'red'}}>{eachMovie.title}</h1>
+            <h1 style = {eachMovie.isOscar?{'color':'blue'}:{'color':'red'}}>{eachMovie.title}</h1>
             <h2>Date: {eachMovie.releaseDate}</h2>
             <button onClick={()=>deleteMovie(eachMovie.id)}>Delete</button>
             <input placeholder='Update Title...' type='text' onChange={(e)=>setUpdatedTitle(e.target.value)}></input>
